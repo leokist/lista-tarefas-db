@@ -1,0 +1,2 @@
+# lista-tarefas-db
+LISTA DE TAREFAS EM PYTHON E KIVY
