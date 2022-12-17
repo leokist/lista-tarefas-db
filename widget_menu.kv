@@ -1,0 +1,82 @@
+#:import C kivy.utils.get_color_from_hex
+
+<MenuHorBox@BoxLayout>:
+    orientation: "horizontal"
+    size_hint_y: None
+    height: dp(40)
+    spacing: dp(5)
+    padding: dp(5)
+
+<MenuImage@Image>:
+    color: C("#FF914D")
+    size_hint_x: None
+    width: dp(30)
+    pos_hint: {"center_x":0.5}
+
+<MenuButton@Button>:
+    background_color: 0,0,0,0
+    size_hint: 1.0,None
+    height: dp(30)
+    canvas.before:
+        Color:
+            rgba: C("#F4F7F5") if self.state == "normal" else C("#FF914D")
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    color: C("#000000")
+    font_size: "16sp"
+    text_size: self.size
+    halign: "left"
+    valign: "middle"
+
+<Separador@Widget>:
+    size_hint: 0.95, None
+    height: dp(1)
+    pos_hint: {"center_x":0.5}
+    canvas:
+        Color:
+            rgb: C("#393535")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<Menu@BoxLayout>:
+    orientation: "horizontal"
+    BoxLayout:
+        orientation: "vertical"
+        canvas:
+            Color:
+                rgba: C("#F4F7F5")
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Separador:
+        MenuHorBox:
+            MenuImage:
+                source:"assets/check-w.png"
+            MenuButton:
+                text: "Lista de Tarefas"
+                on_release:
+                    app.root.current = "TelaTarefas"
+                    root.parent.remove_widget(root)
+        Separador:
+        MenuHorBox:
+            MenuImage:
+                source:"assets/information-w.png"
+            MenuButton:
+                text: "Sobre"
+                on_release:
+                    app.root.current = "TelaSobre"
+                    root.parent.remove_widget(root)
+        Separador:
+        Label:
+            text: ""
+            background_color: C("#FAFAFA")
+            size_hint: 1.0, None
+            height: dp(50)
+    Button:
+        text: ""
+        size_hint: 0.45, 1.0
+        background_color: 1,1,1,0.2
+        on_press:
+            root.parent.remove_widget(root)

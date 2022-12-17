@@ -1,0 +1,68 @@
+#:import C kivy.utils.get_color_from_hex
+<Cabecalho@AnchorLayout>:
+    anchor_y: "top"
+    size_hint: 1.0, None
+    height: dp(150)
+    canvas:
+        Color:
+            rgba: C("#393535")
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: 0,0,dp(20),dp(20)
+    pos_hint: {"top":1.0}
+
+<Rodape@AnchorLayout>:
+    anchor_y: "bottom"
+    size_hint: 1.0, None
+    height: dp(60)
+    canvas:
+        Color:
+            rgba: C("#393535")
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: 0,dp(30),0,0
+    pos_hint: {"bottom":1.0}
+
+<MenuRoundButton@Button>:
+    background_color: 0,0,0,0
+    size_hint: None, None
+    size: dp(40), dp(40)
+    AnchorLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+        Image:
+            source: "assets/menu-w.png"
+            color: C("#FF914D") if root.state == "normal" else (0.26,0.26,0.26,1)
+            size_hint: None, None
+            height: dp(40)
+            width: dp(40)
+
+<AddRoundButton@Button>:
+    background_color: 0,0,0,0
+    size_hint: None, None
+    size: dp(40), dp(40)
+    AnchorLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+        Image:
+            source: "assets/plus-w.png"
+            color: C("#FF914D") if root.state == "normal" else (0.26,0.26,0.26,1)
+            size_hint: None, None
+            height: dp(40)
+            width: dp(40)
+
+<DelButton@Button>:
+    background_color: 0,0,0,0
+    size_hint: None, None
+    size: dp(40), dp(40)
+    AnchorLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+        Image:
+            source: "assets/delete-w.png"
+            color: C("#FF914D") if root.state == "normal" else (0.26,0.26,0.26,1)
+            size_hint: None, None
+            height: dp(40)
+            width: dp(40)

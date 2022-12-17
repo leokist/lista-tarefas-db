@@ -1,0 +1,77 @@
+#:import C kivy.utils.get_color_from_hex
+#:include widgets_custom.kv
+
+<TelaSobre>:
+    FloatLayout:
+        Cabecalho:
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "top"
+            padding: dp(25),dp(15),dp(25),dp(0)
+            BoxLayout:
+                orientation: "horizontal"
+                pos: self.pos
+                size_hint_y: None
+                height: dp(50)
+                Label:
+                    text: "Sobre"
+                    color: C("#FFFFFF")
+                    font_size: "28sp"
+                    text_size: self.size
+                    halign: "left"
+                    valign: "middle"
+                Image:
+                    source: "assets/information-w.png"
+                    color: C("#FF914D")
+                    size_hint: None, None
+                    width: dp(34)
+                    height: dp(48)
+                    pos_hint:{"center_y":0.5}
+        AnchorLayout:
+            anchor_y: "top"
+            anchor_x: "center"
+            padding: 0,dp(75),0,0
+            BoxLayout:
+                background_color: 0,0,0,0
+                canvas:
+                    Color:
+                        rgba: C("FFFFFF")
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: dp(10),dp(10),dp(10),dp(10)
+                size_hint: None, None
+                size: dp(310),dp(150)
+                orientation: "vertical"
+                spacing: dp(5)
+                padding: dp(20)
+                MyLabel:
+                    text: "Lista de Tarefas"
+                    height: dp(15)
+                MyLabel:
+                    text: "Desenvolvido por:"
+                    height: dp(15)
+                MyLabel:
+                    text: "Leonardo Henrique Marin Kist"
+                    height: dp(15)
+                MyLabel:
+                    text: "Para o Ebook:"
+                    height: dp(15)
+                MyLabel:
+                    text: "Python & Kivy - Desenvolvimento de Apps: Do Básico ao Primeiro App"
+                    height: dp(30)
+        Rodape:
+        AnchorLayout:
+            anchor_y: "bottom"
+            anchor_x: "left"
+            padding: dp(5),0,0,dp(5)
+            MenuRoundButton:
+                on_release: root.add_widget(F.Menu())
+
+<MyLabel@Label>:
+    color: C("#000000")
+    font_size: "14sp"
+    text_size: self.size
+    halign: "center"
+    valign: "center"
+    size_hint_y: None

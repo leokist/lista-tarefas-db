@@ -1,0 +1,65 @@
+#:include widgets_custom.kv
+#:import F kivy.factory.Factory
+#:import Transition kivy.uix.screenmanager.NoTransition
+#:import C kivy.utils.get_color_from_hex
+#:include novo_item.kv
+#:include widget_menu.kv
+#:include tela_sobre.kv
+
+<Gerenciador>:
+    transition: Transition()
+    TelaTarefas:
+        name: "TelaTarefas"
+    TelaSobre:
+        name: "TelaSobre"
+
+<TelaTarefas>:
+    FloatLayout:
+        Cabecalho:
+            padding: dp(25),dp(25),0,0
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(30)
+                spacing: dp(10)
+                Image:
+                    source: "assets/ok2-w.png"
+                    color: C("#FF914D")
+                    size_hint: None, None
+                    width: dp(30)
+                    height: dp(30)
+                Label:
+                    text: "Lista de Tarefas"
+                    font_size: "28sp"
+                    color: C("#FFFFFF")
+                    text_size: self.size
+                    halign: "left"
+                    valign: "middle"
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "top"
+            padding: dp(30),dp(120),dp(30),0
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+                GridLayout:
+                    id: box
+                    cols: 1
+                    spacing: dp(10)
+                    size_hint_y: None
+                    height: self.minimum_height + 200
+        Rodape:
+            padding: dp(10),dp(10),dp(10),dp(10)
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(60)
+                spacing: dp(10)
+                MenuRoundButton:
+                    on_release: root.add_widget(F.Menu())
+                TextInput:
+                    id: txt
+                    size_hint_y: None
+                    height: dp(40)
+                AddRoundButton:
+                    on_release: root.addWidget()

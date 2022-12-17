@@ -1,0 +1,33 @@
+#:import C kivy.utils.get_color_from_hex
+
+<NovoItem>:
+    canvas:
+        Color:
+            rgba: C("#FFFFFF")
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: dp(15),dp(15),dp(15),dp(15)
+    size_hint_y: None
+    height: dp(60)
+    padding: dp(10)
+    spacing: dp(10)
+    DelButton:
+        on_release: root.delTarefa()
+        on_release: app.root.get_screen("TelaTarefas").ids.box.remove_widget(root)
+    Label:
+        id: txtlabel
+        text_size: self.size
+        halign: "justify"
+        valign: "center"
+        max_lines: 3
+        line_height: 0.75
+        font_size: "14sp"
+        color: 0,0,0,1
+        size_hint_x: 0.75
+    CheckBox:
+        id: cb
+        color: C("#0D8F45")
+        size_hint_x: None
+        width: dp(45)
+        on_active: root.changeColor()
